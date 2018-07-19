@@ -16,7 +16,7 @@ namespace HangmanGame.Tests
         {
             char input = 'a';
 
-            Assert.IsTrue(Rules.isALetter(input));
+            Assert.IsTrue(Rules.IsALetter(input));
         }
 
         [TestMethod()]
@@ -24,7 +24,7 @@ namespace HangmanGame.Tests
         {
             char input = 'A';
 
-            Assert.IsTrue(Rules.isALetter(input));
+            Assert.IsTrue(Rules.IsALetter(input));
         }
 
         [TestMethod()]
@@ -32,7 +32,7 @@ namespace HangmanGame.Tests
         {
             char input = '5';
 
-            Assert.IsFalse(Rules.isALetter(input));
+            Assert.IsFalse(Rules.IsALetter(input));
         }
 
         [TestMethod()]
@@ -40,7 +40,7 @@ namespace HangmanGame.Tests
         {
             char input = '@';
 
-            Assert.IsFalse(Rules.isALetter(input));
+            Assert.IsFalse(Rules.IsALetter(input));
         }
 
         [TestMethod()]
@@ -49,7 +49,7 @@ namespace HangmanGame.Tests
             string word = "Animal";
             char input = 'a';
 
-            Assert.IsTrue(Rules.letterContains(word, input));
+            Assert.IsTrue(Rules.WordContains(word, input));
         }
 
         [TestMethod()]
@@ -58,7 +58,7 @@ namespace HangmanGame.Tests
             string word = "Animal";
             char input = 'M';
 
-            Assert.IsTrue(Rules.letterContains(word, input));
+            Assert.IsTrue(Rules.WordContains(word, input));
         }
 
         [TestMethod()]
@@ -67,7 +67,23 @@ namespace HangmanGame.Tests
             string word = "Animal";
             char input = '4';
 
-            Assert.IsFalse(Rules.letterContains(word, input));
+            Assert.IsFalse(Rules.WordContains(word, input));
+        }
+
+        [TestMethod()]
+        public void OutOfAttempts_TestNoMoreAttempts()
+        {
+            int attempts = 7;
+
+            Assert.IsTrue(Rules.OutOfAttempts(attempts));
+        }
+
+        [TestMethod()]
+        public void OutOfAttempts_TestHasMoreAttempts()
+        {
+            int attempts = 6;
+
+            Assert.IsFalse(Rules.OutOfAttempts(attempts));
         }
     }
 }

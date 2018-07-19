@@ -9,14 +9,26 @@ namespace HangmanGame
 {
     public static class Rules
     {
-        public static bool isALetter(char input)
+        const int MAX_NUM_OF_ATTEMPTS = 7;
+
+        public static bool IsALetter(char input)
         {
             return Regex.IsMatch(input.ToString(), "[a-z]", RegexOptions.IgnoreCase);
         }
 
-        public static bool letterContains(string word, char input)
+        public static bool WordContains(string word, char input)
         {
             return Regex.IsMatch(word, input.ToString(), RegexOptions.IgnoreCase);
+        }
+
+        public static bool OutOfAttempts(int attempts)
+        {
+            if(attempts == MAX_NUM_OF_ATTEMPTS)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
